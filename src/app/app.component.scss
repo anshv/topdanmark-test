@@ -1,0 +1,22 @@
+.logo{
+    vertical-align: top;
+    fill: #00b2d6;
+    fill: var(--bpk-primary-color,#00b2d6);
+    width: 10.71429rem;
+    height: 1.875rem;
+}
+.navCls{
+    background-color: white;
+    height: 55px;
+    border-bottom: 1px solid #ededed;
+    padding: 10px 30px;
+}
+.full-height{
+    height: 150vh;
+    background: url('../assets/images/bg-img.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: -60px;
+    width: 100%;
+}

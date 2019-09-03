@@ -1,0 +1,52 @@
+<div class="container" style="color:white">
+  <div class="row">
+    <div class="col-md-12">
+      <p class="text-center heading">Look for a whole month cheapest fare</p>
+      <div *ngIf="errorMessage" class="alert alert-warning">
+        <strong>Warning!</strong> {{errorMessage}}
+      </div>
+      <div class="formCls">
+        <form class="row" name="searchForm" (ngSubmit)="searchForm.form.valid && searchFlight()" #searchForm="ngForm">
+          <div class="form-group col-xs-12 col-md-3">
+            <label for="origin">Origin</label>
+            <select class="form-control" name="origin" [(ngModel)]="searchModel.origin" #origin="ngModel" required
+            [ngClass]="origin.errors?.required && origin.touched ? 'border-1 border-danger' : 'border-0'">
+              <option value="">Select</option>
+              <option value="KUL-sky">Kuala Lumpur(KUL)</option>
+              <option value="SIN-sky">Singapore(SIN)</option>
+              <option value="SFO-sky">San Fransisco(SFO)</option>
+            </select>
+          </div>
+          <div class="form-group col-xs-12 col-md-3">
+            <label for="destination">Destination</label>
+            <select class="form-control" name="destination" [(ngModel)]="searchModel.destination" #destination="ngModel" required
+            [ngClass]="destination.errors?.required && destination.touched ? 'border-1 border-danger' : 'border-0'">
+              <option value="">Select</option>
+              <option value="KUL-sky">Kuala Lumpur(KUL)</option>
+              <option value="SIN-sky">Singapore(SIN)</option>
+              <option value="SFO-sky">San Fransisco(SFO)</option>
+            </select>
+          </div>
+          <div class="form-group col-xs-12 col-md-3">
+            <label for="submit">&nbsp;</label><br/>
+            <button class="btn btn-md btn-primary" name="submit" id="submit" >Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+  <div class="container" style="background:gray;" *ngIf="calendarFaresData?.length>0">
+    <div class="row pb-2 pt-2">
+      <div class="col-md-12 text-center">
+        <strong>{{viewDate | date:'MMMM yyyy'}}</strong>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-md-12">
+        <full-calendar defaultView="dayGridMonth" [header]="false" deepChangeDetection="true" [showNonCurrentDates]="false" [fixedWeekCount]="false" [plugins]="calendarPlugins"
+          [events]="calendarFaresData" [height]="500"></full-calendar>
+      </div>
+    </div>
+  </div>
+</div>
